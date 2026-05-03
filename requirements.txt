@@ -1,0 +1,11 @@
+open-clip-torch
+Pillow
+torch
+torchvision
+sentence-transformers
+chromadb
+langchain
+langchain-ollama
+langchain-huggingface
+flask
+python-dotenv
