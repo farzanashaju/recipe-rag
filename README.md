@@ -19,7 +19,7 @@ A multimodal RAG assistant designed to answer culinary questions, suggest meal i
 ### Chat & Web App (`app/app.py`)
 
 - Using Ollama, the system dynamically toggles between llama3.2 (for fast text responses) and llama3.2-vision (when the user provides an image as input).
-- At boot, the system offloads the heavy initialization of the CLIP model and Vector DB to a background daemon thread. This prevents the Flask server from locking up, allowing the web UI to be interactive instantly.
+- The system lazy-loads the heavy initialization of the CLIP model and Vector DB on the very first user request.
 - To protect system RAM, the backend is configured to prevent model duplication, ensuring the ~4GB ViT model only occupies a single instance in memory.
 
 ## Prerequisites
@@ -52,11 +52,13 @@ python scripts/scrape-swiggy-recipes.py
 
 ### Run the Web App
 
-Launch the Flask backend and wait for the "warm-up complete" log in the terminal indicating Chroma is ready.
+Launch the Flask backend.
 
 ```bash
 python app/app.py
 ```
+
+Note that the first query will take slightly longer to process.
 
 ### Open in Browser
 
