@@ -29,16 +29,8 @@ rag = RecipeRAG(
     retrieval_k=5,
 )
 
-
-def _warm_up():
-    """Pre-load CLIP model and vector store in background."""
-    print("Warming up")
-    rag.build_index()
-    print("Warmup complete")
-
-
-threading.Thread(target=_warm_up, daemon=True, name="rag-warmup").start()
-
+# The RAG model will lazy-load on the first user request.
+# The first response may be a bit slow.
 
 @app.get("/")
 def index():
