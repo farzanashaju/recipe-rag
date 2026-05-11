@@ -7,6 +7,10 @@ chromadb
 langchain
 langchain-ollama
 langchain-huggingface
+langchain-community
+langchain-core
+langchain-experimental
 flask
 python-dotenv
 gunicorn
+playwright

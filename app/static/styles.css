@@ -155,6 +155,7 @@ body {
   flex-direction: column;
   gap: 8px;
   padding: 10px;
+  padding-bottom: calc(10px + env(safe-area-inset-bottom));
 }
 
 .composer-controls {
@@ -374,9 +375,16 @@ button:disabled {
   }
 
   .composer {
-    grid-template-columns: 1fr;
     width: 100%;
     border-radius: 14px;
+  }
+
+  .composer-controls {
+    flex-direction: column;
+  }
+
+  .input-wrapper {
+    width: 100%;
   }
 
   button {
