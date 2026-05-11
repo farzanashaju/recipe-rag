@@ -349,6 +349,17 @@ button:disabled {
   font-size: 0.9em;
   font-family: monospace;
 }
+.markdown-body a {
+  color: #e0f2fe;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.markdown-body a:hover {
+  color: #bae6fd;
+}
+.markdown-body a:visited {
+  color: #c7d2fe;
+}
 .markdown-body pre {
   background: rgba(0, 0, 0, 0.3);
   padding: 1em;
