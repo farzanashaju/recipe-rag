@@ -1,13 +1,13 @@
 :root {
-  --bg: #121513;
-  --surface: rgba(30, 36, 32, 0.65);
-  --surface-border: rgba(255, 255, 255, 0.1);
-  --ink: #e8eae9;
-  --muted: #8b9992;
-  --bot: #1c221e;
-  --user: #267552;
-  --user-ink: #ffffff;
-  --accent: #d85e2b;
+  --bg: #0f172a;
+  --surface: rgba(30, 41, 59, 0.7);
+  --surface-border: rgba(56, 189, 248, 0.12);
+  --ink: #e2e8f0;
+  --muted: #94a3b8;
+  --bot: #1e293b;
+  --user: #0369a1;
+  --user-ink: #f0f9ff;
+  --accent: #38bdf8;
 }
 
 * {
@@ -21,11 +21,9 @@ body {
 }
 
 body {
-  font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
-  background:
-    radial-gradient(900px 500px at 0% 0%, #1a2620 0%, transparent 55%),
-    radial-gradient(700px 420px at 100% 100%, #2e1e17 0%, transparent 54%),
-    var(--bg);
+  /* Font changed to Inter to match the blue project */
+  font-family: "Inter", "Space Grotesk", sans-serif;
+  background: var(--bg);
   color: var(--ink);
 }
 
@@ -50,8 +48,8 @@ body {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 700;
-  color: #fff;
-  background: linear-gradient(130deg, #cc662f, #2d6b51);
+  color: var(--bg);
+  background: var(--accent);
   border-radius: 999px;
   padding: 8px 14px;
 }
@@ -72,12 +70,11 @@ body {
   max-width: min(72ch, 82%);
   width: fit-content;
   display: inline-block;
-  padding: 12px 14px;
+  padding: 8px 14px 8px;
   border-radius: 16px;
-  line-height: 1.45;
+  line-height: 1.35;
   font-size: 0.98rem;
   animation: fadeIn 180ms ease;
-  white-space: pre-wrap;
   word-break: break-word;
 }
 
@@ -90,7 +87,8 @@ body {
   background: var(--user);
   color: var(--user-ink);
   border-bottom-right-radius: 8px;
-  box-shadow: 0 4px 16px rgba(31, 95, 67, 0.22);
+  box-shadow: 0 4px 16px rgba(3, 105, 161, 0.25);
+  white-space: pre-wrap;
 }
 
 .msg.bot {
@@ -224,14 +222,14 @@ body {
   flex: 1;
   display: flex;
   align-items: flex-end;
-  background: #252a28;
+  background: #1e293b; /* Matches --bot for consistency */
   border-radius: 12px;
-  border: 1px solid transparent;
+  border: 1px solid var(--surface-border);
 }
 
 .input-wrapper:focus-within {
-  outline: 2px solid rgba(216, 94, 43, 0.24);
-  border-color: rgba(216, 94, 43, 0.5);
+  outline: 2px solid rgba(56, 189, 248, 0.2);
+  border-color: var(--accent);
 }
 
 .attach-btn {
@@ -272,8 +270,9 @@ button {
   font: inherit;
   font-weight: 600;
   cursor: pointer;
-  background: linear-gradient(135deg, var(--accent), #bf4d22);
-  color: white;
+  background: var(--accent);
+  color: var(--bg);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   transition: transform 120ms ease, filter 120ms ease;
 }
 
@@ -287,11 +286,13 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  line-height: 1;
 }
 
 .icon-btn svg {
   width: 20px;
   height: 20px;
+  display: block;
 }
 
 button:hover {
@@ -320,7 +321,7 @@ button:disabled {
 
 .markdown-body {
   font-size: 0.98rem;
-  line-height: 1.5;
+  line-height: 1.35;
 }
 .markdown-body > *:first-child {
   margin-top: 0;
@@ -333,7 +334,6 @@ button:disabled {
 .markdown-body ol {
   margin-bottom: 0.85em;
 }
-.markdown-body ul, 
 .markdown-body ol {
   padding-left: 1.6em;
 }
@@ -359,6 +359,14 @@ button:disabled {
   padding: 0;
 }
 
+.markdown-body p + p {
+  margin-top: 0.8em; 
+}
+
+.markdown-body p:last-child {
+  margin-bottom: 0;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -370,12 +378,12 @@ button:disabled {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--border, #334155);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--muted);
 }
 
 @media (max-width: 700px) {

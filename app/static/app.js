@@ -133,10 +133,15 @@ async function sendMessage(message, imageBase64) {
     }
 
     hideLoading();
-    addMessage(payload.answer || "No answer returned.", "bot");
+
+    const cleanedAnswer = (payload.answer || "No answer returned.").trim();
+    
+    addMessage(cleanedAnswer, "bot");
+    
     if (payload.answer) {
-      chatHistory.push({ role: "assistant", content: payload.answer });
+      chatHistory.push({ role: "assistant", content: cleanedAnswer });
     }
+
   } catch (error) {
     hideLoading();
     addMessage(`Error: ${error.message}`, "bot");
