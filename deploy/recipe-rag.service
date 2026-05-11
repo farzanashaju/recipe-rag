@@ -1,0 +1,17 @@
+[Unit]
+Description=Recipe RAG Gunicorn Service
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=www-data
+WorkingDirectory=/opt/recipe-rag
+Environment="PATH=/opt/recipe-rag/venv/bin"
+ExecStart=/opt/recipe-rag/venv/bin/gunicorn -c /opt/recipe-rag/deploy/gunicorn.conf.py app.app:app
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

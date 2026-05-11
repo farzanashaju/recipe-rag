@@ -22,15 +22,23 @@ RecipeRAG = load_recipe_rag_class()
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 
-rag = RecipeRAG(
-    json_dir=str(BASE_DIR.parent / "data" / "swiggy_recipe_json"),
-    db_dir=str(BASE_DIR.parent / "data" / "recipe_db_local"),
-    llm_model="llama3.2",
-    retrieval_k=5,
-)
+_rag = None
+_rag_lock = threading.Lock()
 
-# The RAG model will lazy-load on the first user request.
-# The first response may be a bit slow.
+
+def get_rag():
+    """Lazy-load the RecipeRAG instance to avoid slow startup and duplication."""
+    global _rag
+    if _rag is None:
+        with _rag_lock:
+            if _rag is None:
+                _rag = RecipeRAG(
+                    json_dir=str(BASE_DIR.parent / "data" / "swiggy_recipe_json"),
+                    db_dir=str(BASE_DIR.parent / "data" / "recipe_db_local"),
+                    llm_model="llama3.2",
+                    retrieval_k=5,
+                )
+    return _rag
 
 @app.get("/")
 def index():
@@ -48,7 +56,7 @@ def chat():
         return jsonify({"error": "Message or image is required."}), 400
 
     try:
-        response = rag.query(question=question, image_b64=image_b64, history=history)
+        response = get_rag().query(question=question, image_b64=image_b64, history=history)
         answer = response.get("result", "No response returned.")
         return jsonify({"answer": answer})
     except Exception as exc:
@@ -56,4 +64,4 @@ def chat():
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=8000, debug=True, use_reloader=False)
+    app.run(host="127.0.0.1", port=8000)

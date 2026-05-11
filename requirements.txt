@@ -9,3 +9,4 @@ langchain-ollama
 langchain-huggingface
 flask
 python-dotenv
+gunicorn
