@@ -69,3 +69,8 @@ You can upload pictures of ingredients or dishes, or type in queries like:
 - What can I make with paneer and spinach in 20 minutes?
 - I'm craving something sweet today.
 - Suggest me a meal under 500 kcal.
+
+### Notes
+
+Find instructions to deploy in `DEPLOYMENT.md`.
+After any changes are made to the app, follow `CHANGES.md`.
