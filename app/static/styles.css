@@ -164,6 +164,11 @@ body {
   width: 100%;
 }
 
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
 .image-preview-container {
   position: relative;
   width: fit-content;
@@ -270,6 +275,23 @@ button {
   background: linear-gradient(135deg, var(--accent), #bf4d22);
   color: white;
   transition: transform 120ms ease, filter 120ms ease;
+}
+
+.icon-btn {
+  padding: 0;
+  width: 46px;
+  min-width: 46px;
+  height: 46px;
+  min-height: 46px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn svg {
+  width: 20px;
+  height: 20px;
 }
 
 button:hover {
@@ -380,15 +402,16 @@ button:disabled {
   }
 
   .composer-controls {
-    flex-direction: column;
+    flex-direction: row;
+    align-items: flex-end;
   }
 
   .input-wrapper {
     width: 100%;
   }
 
-  button {
-    width: 100%;
+  textarea {
+    min-height: 64px;
   }
 }
 
