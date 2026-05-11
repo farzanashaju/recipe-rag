@@ -1,3 +1,5 @@
+# From Scratch
+
 ### 1. Create the GCP VM.
 
 - Machine type: `g2-standard-4`
@@ -153,3 +155,15 @@ sudo systemctl restart nginx
 ### 14. Access the website!
 
 Visit `http://YOUR_EXTERNAL_IP`.
+
+# Resume VM
+
+```bash
+sudo systemctl start ollama
+
+sudo systemctl start recipe-rag
+
+sudo systemctl start nginx
+
+sudo systemctl status recipe-rag nginx ollama
+```

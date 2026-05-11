@@ -160,6 +160,7 @@ body {
   display: flex;
   gap: 8px;
   width: 100%;
+  align-items: center;
 }
 
 .action-buttons {
@@ -287,6 +288,7 @@ button {
   align-items: center;
   justify-content: center;
   line-height: 1;
+  flex-shrink: 0;
 }
 
 .icon-btn svg {
@@ -411,15 +413,23 @@ button:disabled {
 
   .composer-controls {
     flex-direction: row;
-    align-items: flex-end;
+    align-items: center;
   }
 
   .input-wrapper {
     width: 100%;
+    align-self: stretch;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 8px;
+    align-self: center;
+    flex-shrink: 0;
   }
 
   textarea {
-    min-height: 64px;
+    min-height: 48px;
   }
 }
 
