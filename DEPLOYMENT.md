@@ -97,7 +97,22 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### 11. Install systemd service.
+### 11. Data setup.
+
+The repository intentionally excludes generated datasets and vector databases from version control.
+
+After cloning the repository, you must generate the local dataset and embeddings manually.
+
+```bash
+playwright install chromium
+```
+
+```bash
+python scripts/scrape-swiggy-recipes.py
+python scripts/build-rag.py
+```
+
+### 12. Install systemd service.
 
 ```bash
 sudo cp deploy/recipe-rag.service \
@@ -114,7 +129,7 @@ sudo systemctl start recipe-rag
 sudo systemctl status recipe-rag
 ```
 
-### 12. Enable nginx.
+### 13. Enable nginx.
 
 ```bash
 sudo cp deploy/recipe-rag.nginx \
@@ -135,6 +150,6 @@ sudo nginx -t
 sudo systemctl restart nginx
 ```
 
-### 13. Access the website!
+### 14. Access the website!
 
 Visit `http://YOUR_EXTERNAL_IP`.

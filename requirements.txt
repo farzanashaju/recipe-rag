@@ -79,6 +79,7 @@ orjson==3.11.9
 ormsgpack==1.12.2
 overrides==7.7.0
 packaging==26.2
+playwright==1.54.0
 pillow==12.2.0
 propcache==0.5.2
 protobuf==6.33.6
